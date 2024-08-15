@@ -1,0 +1,310 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Comic Tasker</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <link href="{% static 'app/css/reset.css' %}" rel="stylesheet" />
+        <link href="{% static 'app/css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'app/css/header.css' %}" rel="stylesheet" />
+        <link href="{% static 'app/css/buttons.css' %}" rel="stylesheet" />
+        <link href="{% static 'app/css/footer.css' %}" rel="stylesheet" />
+
+        {% comment %} Fonts {% endcomment %}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet"
+        />
+
+        {% comment %} CSS {% endcomment %}
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous"
+        />
+        <link href="{% static 'app/css/reset.css' %}" rel="stylesheet" />
+        <link href="{% static 'app/css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'app/css/header.css' %}" rel="stylesheet" />
+        <link href="{% static 'app/css/buttons.css' %}" rel="stylesheet" />
+        <link href="{% static 'app/css/footer.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Header -->
+        <header id="header" class="header">
+            {% include 'app/header.html' %}
+        </header>
+
+        <div class="container">
+            <div class="row" style="margin-top: 20px">
+                <h4></h4>
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+
+        <!-- Modal for adding events -->
+        <div
+            class="modal fade"
+            id="eventModal"
+            tabindex="-1"
+            aria-labelledby="eventModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title task-title" id="eventModalLabel">
+                            Add New Task
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="eventForm">
+                            <div class="mb-3">
+                                <label
+                                    for="eventTitle"
+                                    class="form-label task-subtitle"
+                                    >Task Title</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="eventTitle"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label
+                                    for="eventGoal"
+                                    class="form-label task-subtitle"
+                                    >Select Goal</label
+                                >
+                                <select
+                                    class="form-control"
+                                    id="eventGoal"
+                                    required
+                                >
+                                    {% for goal in goals %}
+                                    <option value="{{ goal.id }}">
+                                        {{ goal.goal_name }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label
+                                    for="eventStartDate"
+                                    class="form-label task-subtitle"
+                                    >Start Date</label
+                                >
+                                <input
+                                    type="datetime-local"
+                                    class="form-control"
+                                    id="eventStartDate"
+                                    required
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label
+                                    for="eventEndDate"
+                                    class="form-label task-subtitle"
+                                    >End Date</label
+                                >
+                                <input
+                                    type="datetime-local"
+                                    class="form-control"
+                                    id="eventEndDate"
+                                    required
+                                />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn--danger"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button
+                            type="button"
+                            id="saveEvent"
+                            class="btn btn--next-page"
+                        >
+                            Save Task
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                var calendar = $("#calendar").fullCalendar({
+                    header: {
+                        left: "prev,next today",
+                        center: "title",
+                        right: "month,agendaWeek,agendaDay",
+                    },
+                    events: "/all_events",
+                    selectable: true,
+                    selectHelper: true,
+                    editable: true,
+                    eventLimit: true,
+                    select: function (start, end, allDay) {
+                        $("#eventStartDate").val(
+                            moment(start).format("YYYY-MM-DDTHH:mm")
+                        );
+                        $("#eventEndDate").val(
+                            moment(end).format("YYYY-MM-DDTHH:mm")
+                        );
+                        $("#eventModal").modal("show");
+                    },
+                    eventResize: function (event) {
+                        updateEvent(event);
+                    },
+                    eventDrop: function (event) {
+                        updateEvent(event);
+                    },
+                    eventClick: function (event) {
+                        handleEventClick(event);
+                    },
+                });
+
+                $("#saveEvent").on("click", function () {
+                    var title = $("#eventTitle").val();
+                    var goal = $("#eventGoal").val();
+                    var start = $("#eventStartDate").val();
+                    var end = $("#eventEndDate").val();
+
+                    // Chuyển đổi định dạng ngày giờ trước khi gửi đi
+                    start = moment(start).format("YYYY-MM-DDTHH:mm:ss");
+                    end = moment(end).format("YYYY-MM-DDTHH:mm:ss");
+
+                    if (title && goal && start && end) {
+                        $.ajax({
+                            type: "GET",
+                            url: "/add_event",
+                            data: {
+                                title: title,
+                                start: start,
+                                end: end,
+                                goal: goal,
+                            },
+                            dataType: "json",
+                            success: function (data) {
+                                calendar.fullCalendar("refetchEvents");
+                                $("#eventModal").modal("hide");
+                            },
+                            error: function (data) {
+                                alert("There is a problem!");
+                            },
+                        });
+                    } else {
+                        alert("Please complete all fields!");
+                    }
+                });
+
+                function updateEvent(event) {
+                    var start = moment(event.start).format(
+                        "YYYY-MM-DDTHH:mm:ss"
+                    );
+                    var end = moment(event.end).format("YYYY-MM-DDTHH:mm:ss");
+                    var title = event.title;
+                    var id = event.id;
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/update",
+                        data: {
+                            title: title,
+                            start: start,
+                            end: end,
+                            id: id,
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            calendar.fullCalendar("refetchEvents");
+                            alert("Event Updated");
+                        },
+                        error: function (data) {
+                            alert("There is a problem!");
+                        },
+                    });
+                }
+
+                function handleEventClick(event) {
+                    var action = confirm(
+                        'Mark as Completed? Click "Cancel" to remove.'
+                    );
+
+                    if (action) {
+                        $.ajax({
+                            type: "GET",
+                            url: "/complete_event",
+                            data: { id: event.id },
+                            dataType: "json",
+                            success: function (data) {
+                                calendar.fullCalendar("refetchEvents");
+                            },
+                            error: function (data) {
+                                alert("There is a problem!");
+                            },
+                        });
+                    } else {
+                        var remove = confirm(
+                            "Are you sure you want to remove it?"
+                        );
+                        if (remove) {
+                            $.ajax({
+                                type: "GET",
+                                url: "/remove_event",
+                                data: { id: event.id },
+                                dataType: "json",
+                                success: function (data) {
+                                    calendar.fullCalendar("refetchEvents");
+                                },
+                                error: function (data) {
+                                    alert("There is a problem!");
+                                },
+                            });
+                        }
+                    }
+                }
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

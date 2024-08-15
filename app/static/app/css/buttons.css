@@ -1,0 +1,128 @@
+.filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: 36px;
+    padding: 0 14px;
+    border-radius: 6px;
+    color: var(--filter-btn-color);
+    background: var(--filter-btn-bg);
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 142.857%;
+}
+.like-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0px 20px 60px rgba(124, 124, 124, 0.2);
+}
+.like-btn self:not(&--liked)self__icon--liked {
+    display: none;
+}
+.like-btn--liked .like-btn__icon {
+    display: none;
+}
+.like-btn__icon--liked {
+    margin-top: 6px;
+}
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 46px;
+    padding: 0 20px;
+    border-radius: 6px;
+    background: #f8f8fb;
+    font-size: 1.5rem;
+    font-weight: 500;
+    white-space: nowrap;
+    user-select: none;
+}
+.btn--small {
+    height: 40px;
+}
+.btn + .btn:not(.btn--no-margin) {
+    margin-left: 20px;
+}
+.btn--text {
+    background: transparent;
+    font-weight: 500;
+    border: 1px solid #d2d1d6;
+}
+.btn--primary {
+    color: #171c28;
+    background: #ffb700;
+    font-size: 16px;
+}
+
+.btn--calendar {
+    color: #000;
+    background: rgb(0, 203, 0);
+}
+.btn--calendar:hover {
+    color: #000;
+    background: rgb(0, 203, 0);
+}
+
+.btn--primary:hover {
+    color: #171c28;
+    background: #ffb700;
+}
+
+.btn--outline {
+    background: transparent;
+    border: 1px solid #d2d1d6;
+}
+.btn--rounded {
+    border-radius: 99px;
+}
+.btn--danger {
+    color: #fff;
+    background: #ed4337;
+    font-size: 18px;
+}
+
+.btn--danger:hover {
+    color: #fff;
+    background: #ed4337;
+}
+
+.btn[disabled],
+.btn--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+.btn:hover {
+    opacity: 0.9;
+    box-shadow: 1px 1px 3px 3px #cccccc;
+}
+
+.btn-small {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 20px;
+    padding: 0 20px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.btn--next-page {
+    color: #fff;
+    background: rgb(29, 138, 255);
+    font-size: 18px;
+}
+
+.btn--next-page:hover {
+    color: #fff;
+    background: rgb(29, 138, 255);
+}

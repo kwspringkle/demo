@@ -1,0 +1,130 @@
+{% comment %} Navbar {% endcomment %} {% comment %}
+<nav
+    class="navbar navbar-expand-lg bg-body-tertiary"
+    style="background-color: #e3f2fd"
+>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Comic Tasker</a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#"
+                        >Home</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li>
+                            <a class="dropdown-item" href="#">Another action</a>
+                        </li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li>
+                            <a class="dropdown-item" href="#"
+                                >Something else here</a
+                            >
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true"
+                        >Disabled</a
+                    >
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                />
+                <button class="btn btn-outline-success" type="submit">
+                    Search
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+{% endcomment %} {% load static %}
+<div class="container">
+    <div class="top-bar">
+        <!-- More -->
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <img
+                src="{% static 'app/img/only-text.png' %}"
+                alt="Logo"
+                class="logo__img"
+            />
+        </a>
+
+        <!-- Navbar -->
+        <nav class="navbar">
+            <ul class="navbar__list">
+                <li class="navbar__item">
+                    <a href="/" class="navbar__link">About app</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="{% url 'list_goals' %}" class="navbar__link"
+                        >Your Goal</a
+                    >
+                </li>
+                <li class="navbar__item">
+                    <a href="#add-new" class="navbar__link">Achievements</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="#docs" class="navbar__link">Progress</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Actions -->
+        <div class="top-act">
+            <!-- <div class="top-act__user">
+                  <img
+                      src="./assets/img/avatar.jpg"
+                      alt=""
+                      class="top-act__avatar"
+                  />
+              </div>
+               -->
+            <a
+                href="{% url 'calendar' %}"
+                class="btn btn--calendar"
+                style="font-size: 16px"
+                >Calendar</a
+            >
+            <a
+                href="{% url 'create_goal' %}"
+                class="btn btn--primary"
+                style="font-size: 16px"
+                >AI Help</a
+            >
+        </div>
+    </div>
+</div>

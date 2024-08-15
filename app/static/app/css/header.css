@@ -1,0 +1,44 @@
+.header {
+    position: sticky;
+    top: -8px;
+    z-index: 5;
+    background-color: #fff;
+    box-shadow: 0.5px 0.5px 4px 4px #ccc;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 10px 0;
+    justify-content: space-between;
+}
+
+.logo__img {
+    margin-top: 1px;
+    width: 120px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.top-act__group,
+.top-act,
+.navbar__list,
+.top-bar {
+    display: flex;
+    align-items: center;
+}
+.navbar a:hover {
+    transition: 0.2s;
+    text-decoration: underline;
+}
+.navbar__link {
+    padding: 0 15px 0 15px;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.navbar__link:first-of-type {
+    margin-left: 35px;
+}

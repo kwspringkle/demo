@@ -1,0 +1,198 @@
+.form:has(:invalid) .form__submit-btn {
+    opacity: 0.5;
+    pointer-events: none;
+}
+.form__group {
+    margin-top: 8px;
+    margin-bottom: 15px;
+}
+.form__group--inline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.form__group--options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form
+    self__group:has(:invalid):has(&__input:not(:placeholder-shown))
+    .form__text-input {
+    border-color: red;
+    background: rgba(255, 0, 0, 0.1);
+}
+.form
+    self__group:has(:invalid):has(&__input:not(:placeholder-shown))
+    .form__error,
+.form
+    self__group:has(:invalid):has(&__input:not(:placeholder-shown))
+    .form__input-icon-error {
+    display: block;
+}
+.form__text-input {
+    border-radius: 10px;
+    border: 1px solid #d2d1d6;
+    display: flex;
+    margin: 10px auto;
+    width: 350px;
+    padding: 12px 5px 12px 12px;
+    align-items: center;
+    gap: 10px;
+}
+.form__text-input:focus-within {
+    border-color: orange;
+}
+.form__input {
+    flex: 1;
+    width: 150%;
+    height: 100%;
+    color: #373434;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    /* 150% */
+}
+.form__input::placeholder {
+    color: #d2d1d6;
+}
+.form__error {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-top: 5px;
+    color: red;
+    display: none;
+}
+.form__input-icon-error {
+    display: none;
+}
+.form__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+}
+.form__checkbox-label {
+    color: #9e9da8;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 146.667%;
+}
+.form__profile {
+    width: 500px;
+    margin-left: 20px;
+}
+.form__container {
+    width: 100wh;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
+}
+.add-homework__heading {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 20px 0 10px 0;
+}
+.difficulty__desc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.difficulty__options {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 5px 20px 5px 10px;
+}
+.add-new__form:has(:invalid) .add-new__form__submit-btn {
+    opacity: 0.5;
+    pointer-events: none;
+}
+.add-new__form__group {
+    margin-top: 8px;
+    margin-bottom: 15px;
+}
+.add-new__form__group--inline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.add-new__form
+    self__group:has(:invalid):has(&__input:not(:placeholder-shown))
+    .form__text-input {
+    border-color: red;
+    background: rgba(255, 0, 0, 0.1);
+}
+.add-new__form
+    self__group:has(:invalid):has(&__input:not(:placeholder-shown))
+    .form__error,
+.add-new__form
+    self__group:has(:invalid):has(&__input:not(:placeholder-shown))
+    .form__input-icon-error {
+    display: block;
+}
+.add-new__form__text-input {
+    border-radius: 10px;
+    border: 1px solid #d2d1d6;
+    display: flex;
+    margin: 0 auto;
+    width: 350px;
+    padding: 12px 5px 12px 12px;
+    align-items: center;
+    gap: 10px;
+}
+.add-new__form__text-input:focus-within {
+    border-color: orange;
+}
+.add-new__form__input {
+    flex: 1;
+    width: 150%;
+    height: 100%;
+    color: #373434;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    /* 150% */
+}
+.add-new__form__input::placeholder {
+    color: #d2d1d6;
+}
+.add-new__form__error {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-top: 5px;
+    color: red;
+    display: none;
+}
+.add-new__form__input-icon-error {
+    display: none;
+}
+.add-new__form__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+}
+.add-new__form__checkbox-label {
+    color: #9e9da8;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 146.667%;
+}
+.add-new__form__profile {
+    width: 500px;
+    margin-left: 20px;
+}
+
+.form-heading {
+    font-weight: 600;
+}
+
+.form-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
